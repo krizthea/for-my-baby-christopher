@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can You Be My Asawa? 💗</title>
+
+    <style>
+        body {
+            background-image:
+                linear-gradient(rgba(70, 0, 35, 0.35), rgba(70, 0, 35, 0.45)),
+                url("boyfriend.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px 15px;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #fff0f6;
+            text-shadow: 2px 2px 6px #d63384;
+        }
+
+        p {
+            color: #fff8fc;
+            text-shadow: 1px 1px 4px #d63384;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background-color: #ff1493;
+        }
+
+        #welcome, #messageScreen, #questionScreen,
+        #celebrationScreen, #envelopeScreen, #letterScreen {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #messageScreen, #questionScreen, #celebrationScreen,
+        #envelopeScreen, #letterScreen {
+            display: none;
+        }
+
+        #buttonArea {
+            position: relative;
+            height: 240px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        #movingYes {
+            position: absolute;
+            left: 25%;
+            top: 20px;
+            margin: 0;
+        }
+
+        #questionNo {
+            position: absolute;
+            left: 55%;
+            top: 20px;
+            margin: 0;
+        }
+
+        #questionNote {
+            position: absolute;
+            top: 90px;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        /* Cute appreciation screen */
+        #envelopeScreen {
+            padding: 25px 15px;
+            margin-top: 20px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #ffb6d9, #ffe6f2, #ffcce5);
+            box-shadow: 0 8px 25px rgba(214, 51, 132, 0.3);
+            animation: fadeIn 0.7s ease;
+        }
+
+        #envelopeScreen h1 {
+            color: #c2185b;
+            text-shadow: none;
+        }
+
+        #envelopeScreen p {
+            color: #a31550;
+            text-shadow: none;
+        }
+
+        /* Small pink envelope */
+        .envelope {
+            width: 180px;
+            height: 120px;
+            position: relative;
+            margin: 35px auto;
+            background: #ff69b4;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(150, 20, 80, 0.25);
+            transition: transform 0.3s;
+        }
+
+        .envelope:hover {
+            transform: scale(1.08) rotate(-2deg);
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 90px solid transparent;
+            border-right: 90px solid transparent;
+            border-top: 70px solid #ffb6d9;
+        }
+
+        .envelope::after {
+            content: "💗";
+            position: absolute;
+            top: 55px;
+            left: 0;
+            width: 100%;
+            font-size: 32px;
+        }
+
+        .envelope-hint {
+            font-size: 14px !important;
+            font-weight: bold;
+        }
+
+        /* Letter background */
+        #letterScreen {
+            display: none;
+            max-width: 650px;
+            margin: 20px auto;
+            padding: 25px;
+            border: 3px solid #ffb6d9;
+            border-radius: 20px;
+            background: linear-gradient(160deg, #fff8fc, #ffe6f2);
+            box-shadow: 0 8px 30px rgba(214, 51, 132, 0.3);
+            text-align: left;
+            animation: fadeIn 0.7s ease;
+        }
+
+        #letterScreen h1 {
+            color: #d63384;
+            text-align: center;
+            text-shadow: none;
+        }
+
+        #letterScreen p {
+            color: #702044;
+            text-shadow: none;
+            font-size: 16px;
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+
+        .signature {
+            text-align: center;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 25px 10px;
+            }
+
+            #letterScreen {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FIRST SCREEN -->
+    <div id="welcome">
+        <h1>Can you be my asawa? 💍</h1>
+        <p>If you choose wisely, you'll have online bembang. 😌💕</p>
+
+        <button onclick="alert('BOBO! 😂❤️')">NO 🙈</button>
+
+        <p style="font-size: 14px; font-style: italic;">
+            Psst... try clicking NO first and see what happens. 👀💕
+        </p>
+
+        <button onclick="showContinue()">YES 💗</button>
+    </div>
+
+    <!-- MESSAGE AFTER HE CLICKS YES -->
+    <div id="messageScreen">
+        <h1>I knew you would say YES! 💗🥰</h1>
+        <p>Did i forced you? NO. 😂❤️</p>
+        <button onclick="showQuestion()">CONTINUE ➡️</button>
+    </div>
+
+    <!-- QUESTION -->
+    <div id="questionScreen">
+        <h1>Question 💗</h1>
+        <p>Do you love me even when I'm super annoying? 🥹💕</p>
+
+        <div id="buttonArea">
+            <button id="movingYes" onclick="moveYesButton()">
+                YES! 💗
+            </button>
+
+            <button id="questionNo" onclick="noAnswer()">
+                NO 🙈
+            </button>
+
+            <p id="questionNote">😈💕</p>
+        </div>
+
+        <p id="clickCounter"></p>
+    </div>
+
+    <!-- MESSAGE AFTER 10 CLICKS -->
+    <div id="celebrationScreen">
+        <h1>YAYYYY! You caught my POKE! 💗🥰</h1>
+        <p>Love you moreeee 😂❤️</p>
+        <button onclick="showEnvelope()">CONTINUE ➡️</button>
+    </div>
+
+    <!-- APPRECIATION ENVELOPE -->
+    <div id="envelopeScreen">
+        <h1>💌 A Little Message for You 💌</h1>
+
+        <p>
+            I have a little appreciation message for you, baby ko.
+            Please open me. 🥹💕
+        </p>
+
+        <div class="envelope"
+             onclick="openLetter()"
+             role="button"
+             tabindex="0"
+             aria-label="Open the love letter"
+             onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openLetter(); }">
+        </div>
+
+        <p class="envelope-hint">
+            💗 CLICK THE ENVELOPE, BABY KO 💗
+        </p>
+
+        <p>Made with all my love, just for you. ❤️</p>
+    </div>
+
+    <!-- FULL APPRECIATION LETTER -->
+    <div id="letterScreen">
+        <h1>For My Baby ❤️🥺</h1>
+
+        <p>Baby ko, I really appreciate you and everything you do for me. The way you treat my family means so much to me, and I appreciate it more than you know. I’m so sure about you and about what I want. I want you to be the person I spend the rest of my life with. You’re such a kind person, and I’m so happy that I met you.</p>
+
+        <p>I miss you so, so much. I hope that when you go back to Chicago, nothing changes between us. I hope you’ll still call me often and keep me updated about your day. I’ve gotten so used to having you here with me. I promise you, I’ll always remember how much I love you and how much I appreciate everything you do for me.</p>
+
+        <p>I want you to know that I’ll always be here to listen to you, whether you want to share your stories, rant about something, or tell me about what’s going on in your life. Always remember that I care about you, your feelings, and everything that happens to you.</p>
+
+        <p>I’ll wait for you again, baby ko. I’ll do my best to get through the distance, even when it gets difficult. I know we’re not perfect, and even though we don’t fight all the time, we do have our moments and arguments. But I hope we’ll always choose to talk things through, understand each other, and work things out instead of letting our problems push us apart.</p>
+
+        <p>I hope you won’t give up on me, even when I’m being crazy, difficult, or annoying sometimes. 😂 I know I have my flaws, but please know that my love for you is real. I love you so much, baby ko.</p>
+
+        <p>Thank you for all the gifts you gave me and for helping me in so many ways. Life has felt so much lighter since I met you. You’ve brought so much happiness and comfort into my life, and I’m truly grateful for that.</p>
+
+        <p>One of the things I love most about you is how kind you are to other people. I can genuinely feel how much you care about my family, and that means everything to me. Seeing you accept my family and treat them with kindness makes me so happy. Honestly, knowing that you accept them is already enough to make me feel so loved.</p>
+
+        <p>I hope you never get tired of me, because I don’t want to get tired of loving you either. I want us to keep choosing each other, even on the difficult days. I want us to grow together, learn from our mistakes, and build the future we always talk about.</p>
+
+        <p>I love you so, so much, baby ko. Please take care of yourself when you get back to Chicago. Even though we won’t be together physically, I hope you’ll always feel my love wherever you are. I’ll miss you every single day, and I’ll be waiting for the day I get to be with you again.</p>
+
+        <p>Thank you for coming into my life and making it so much happier. I love you more than words can explain. ❤️🥺</p>
+
+        <p>And also, good luck on this new journey in your life, baby ko. Always remember that I’m here to support you in whatever you want to do and whatever goals you want to achieve. I believe in you, and I know you can do it because you’re talented, capable, and intelligent. I know you have so much potential, and I’ll always be proud of you and cheer you on in everything you do.</p>
+
+        <p>No matter what happens or how difficult things get, please remember that you’ll always have someone here who believes in you and wants to see you succeed. I’ll always be here to support you, encourage you, and remind you of how amazing you are whenever you need it.</p>
+
+        <p>I love you so much, baby ko, and I can’t wait to see you achieve all the things you’ve been dreaming of. ❤️🥺</p>
+
+        <p class="signature">Forever yours, POKE. 💗💍</p>
+    </div>
+
+    <script>
+        function showContinue() {
+            document.getElementById("welcome").style.display = "none";
+            document.getElementById("messageScreen").style.display = "block";
+            window.scrollTo(0, 0);
+        }
+
+        function showQuestion() {
+            document.getElementById("messageScreen").style.display = "none";
+            document.getElementById("questionScreen").style.display = "block";
+            window.scrollTo(0, 0);
+        }
+
+        let yesClicks = 0;
+
+        function moveYesButton() {
+            yesClicks++;
+
+            const button = document.getElementById("movingYes");
+            const area = document.getElementById("buttonArea");
+
+            if (yesClicks < 10) {
+                const maxX = Math.max(0, area.clientWidth - button.offsetWidth);
+                const maxY = Math.max(0, area.clientHeight - button.offsetHeight);
+
+                button.style.left = Math.random() * maxX + "px";
+                button.style.top = Math.random() * maxY + "px";
+
+                document.getElementById("clickCounter").textContent =
+                    "PAKSHET! 😂";
+            } else {
+                document.getElementById("questionScreen").style.display = "none";
+                document.getElementById("celebrationScreen").style.display = "block";
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function noAnswer() {
+            alert("Liar, you dont love me anymore loko ka. Try again be patient");
+        }
+
+        function showEnvelope() {
+            document.getElementById("celebrationScreen").style.display = "none";
+            document.getElementById("envelopeScreen").style.display = "block";
+            window.scrollTo(0, 0);
+        }
+
+        function openLetter() {
+            document.getElementById("envelopeScreen").style.display = "none";
+            document.getElementById("letterScreen").style.display = "block";
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+</html>
